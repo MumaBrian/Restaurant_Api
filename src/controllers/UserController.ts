@@ -119,6 +119,7 @@ export class UserController {
 
   static async resendVerificationEmail(req, res, next) {
     const email = req.user.email;
+    console.log("email:",email)
     const verification_token = Utils.generateVerificationToken();
     try {
       const user = await User.findOneAndUpdate(
@@ -153,6 +154,7 @@ export class UserController {
 
   static async login(req, res, next) {
     const user = req.user;
+    console.log("user:",req.user)
     const password = req.body.password;
     const data = {
       password,
@@ -316,6 +318,7 @@ export class UserController {
 
   static async updateUserProfile(req, res, next) {
     const user = req.user;
+    console.log("userN",user)
     const phone = req.body.phone;
     const new_email = req.body.email;
     const plain_password = req.body.password;

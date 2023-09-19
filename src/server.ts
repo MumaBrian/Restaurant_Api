@@ -1,4 +1,3 @@
-require("dotenv").config();
 import { Utils } from "./utils/Utils";
 import * as express from "express";
 import * as mongoose from "mongoose";
@@ -14,6 +13,7 @@ import ItemRouter from "./routers/ItemRouter";
 import AddressRouter from "./routers/AddressRouter";
 import OrderRouter from "./routers/OrderRouter";
 import { Redis } from "./utils/Redis";
+import * as dotenv from 'dotenv';
 
 export class Server {
   public app: express.Application = express();

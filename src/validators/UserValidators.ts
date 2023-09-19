@@ -61,7 +61,7 @@ export class UserValidators {
                     throw new Error(e);
                 })
             }),
-            query('password', 'Password is required').isAlphanumeric()
+            body('password', 'Password is required').isAlphanumeric()
         ];
     }
 
@@ -88,10 +88,10 @@ export class UserValidators {
     static verifyResetPasswordToken() {
         return [
             body('email', 'Email is required').isEmail(),
-            query('reset_password_token', 'Reset password token is required').isNumeric()
+            body('reset_password_token', 'Reset password token is required').isNumeric()
             .custom((reset_password_token, {req}) => {
                 return User.findOne({
-                    email: req.query.email,
+                    email: req.body.email,
                     reset_password_token: reset_password_token,
                     reset_password_token_time: { $gt: Date.now() }
                 }).then(user => {
