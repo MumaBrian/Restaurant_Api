@@ -14,6 +14,10 @@ import AddressRouter from "./routers/AddressRouter";
 import OrderRouter from "./routers/OrderRouter";
 import { Redis } from "./utils/Redis";
 import * as dotenv from 'dotenv';
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+const swaggerDocument = YAML.load("./swagger.yaml");
+
 
 export class Server {
   public app: express.Application = express();
@@ -54,7 +58,7 @@ export class Server {
       })
     );
     this.app.use(express.json());
-    // this.app.use(bodyParser.json());
+    this.app.use(bodyParser.json());
   }
 
   allowCors() {
@@ -71,6 +75,10 @@ export class Server {
     this.app.use("/item", ItemRouter);
     this.app.use("/address", AddressRouter);
     this.app.use("/order", OrderRouter);
+
+    this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
   }
 
   error404Handler() {
