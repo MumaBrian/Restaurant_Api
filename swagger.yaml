@@ -4,7 +4,7 @@ info:
   contact: {}
   version: '1.0'
 servers:
-- url: http://localhost:3000
+- url: https://restaurant-api-k68h.onrender.com
   variables: {}
 paths:
   /user/signup:

@@ -12,7 +12,7 @@ import CategoryRouter from "./routers/CategoryRouter";
 import ItemRouter from "./routers/ItemRouter";
 import AddressRouter from "./routers/AddressRouter";
 import OrderRouter from "./routers/OrderRouter";
-// import { Redis } from "./utils/Redis";
+import { Redis } from "./utils/Redis";
 import * as dotenv from 'dotenv';
 const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
@@ -32,7 +32,7 @@ export class Server {
   setConfigs() {
     this.dotenvConfigs();
     this.connectMongoDB();
-    // this.connectRedis();
+    this.connectRedis();
     this.allowCors();
     this.configureBodyParser();
   }
@@ -48,7 +48,7 @@ export class Server {
   }
 
   connectRedis() {
-    // Redis.connectToRedis();
+    Redis.connectToRedis();
   }
 
   configureBodyParser() {
