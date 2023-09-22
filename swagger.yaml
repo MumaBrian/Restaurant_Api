@@ -1,0 +1,1263 @@
+openapi: 3.0.0
+info:
+  title: Restaurant_Api
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://localhost:3000
+  variables: {}
+paths:
+  /user/signup:
+    post:
+      tags:
+      - User
+      summary: signup
+      operationId: signup
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/signuprequest'
+              - example:
+                  name: muma
+                  phone: '1234'
+                  email: gachettela2@gmail.com
+                  password: mumauser
+                  type: admin
+                  status: active
+            example:
+              name: muma
+              phone: '1234'
+              email: gachettela2@gmail.com
+              password: mumauser
+              type: admin
+              status: active
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /user/verify/emailToken:
+    patch:
+      tags:
+      - User
+      summary: verifyUserEmailToken
+      operationId: verifyUserEmailToken
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/verifyUserEmailTokenRequest'
+              - example:
+                  verification_token: '083901'
+                  email: gachettela2@gmail.com
+            example:
+              verification_token: '083901'
+              email: gachettela2@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/send/verification/email:
+    patch:
+      tags:
+      - User
+      summary: resendVerificationEmail
+      operationId: resendVerificationEmail
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/verifyUserEmailTokenRequest'
+              - example:
+                  verification_token: '083901'
+                  email: gachettela2@gmail.com
+            example:
+              verification_token: '083901'
+              email: gachettela2@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/login:
+    patch:
+      tags:
+      - User
+      summary: login
+      operationId: login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/verifyUserEmailTokenRequest'
+              - example:
+                  password: '083901'
+                  email: gachettela2@gmail.com
+            example:
+              password: '083901'
+              email: gachettela2@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/send/reset/password/token:
+    patch:
+      tags:
+      - User
+      summary: checkResetPasswordEmail
+      operationId: checkResetPasswordEmail
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/verifyUserEmailTokenRequest'
+              - example:
+                  email: gachettela2@gmail.com
+            example:
+              email: gachettela2@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/verify/resetPasswordToken:
+    patch:
+      tags:
+      - User
+      summary: verifyResetPasswordToken
+      operationId: verifyResetPasswordToken
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/verifyUserEmailTokenRequest'
+              - example:
+                  email: gachettela2@gmail.com
+                  reset_password_token: xxxx
+            example:
+              email: gachettela2@gmail.com
+              reset_password_token: xxx
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /profile:
+    get:
+      tags:
+      - User
+      summary: profile
+      operationId: profile
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/update/phone:
+    patch:
+      tags:
+      - User
+      summary: updatePhoneNumber
+      operationId: updatePhoneNumber
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updatePhoneNumberRequest'
+              - example:
+                  email: gachettela2@gmail.com
+                  phone: '650199079'
+            example:
+              email: gachettela2@gmail.com
+              phone: '650199079'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/update/profile:
+    patch:
+      tags:
+      - User
+      summary: updateUserProfile
+      operationId: updateUserProfile
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateUserProfileRequest'
+              - example:
+                  email: gachhettela2@gmail.com
+                  phone: '1234'
+                  password: mumauser
+            example:
+              email: gachhettela2@gmail.com
+              phone: '1234'
+              password: mumauser
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/refresh_token:
+    patch:
+      tags:
+      - User
+      summary: decodeRefreshToken
+      operationId: decodeRefreshToken
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateUserProfileRequest'
+              - example:
+            example:
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+      - User
+      summary: getNewTokens
+      operationId: getNewTokens
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /user/logout:
+    get:
+      tags:
+      - User
+      summary: logout
+      operationId: logout
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/update/profilePic:
+    patch:
+      tags:
+      - User
+      summary: updateUserProfilePic
+      operationId: updateUserProfilePic
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateUserProfileRequest'
+              - example:
+                  cover: cover.png
+                  phone: '1234'
+                  password: mumauser
+            example:
+              cover: cover.png
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /restaurant/create:
+    post:
+      tags:
+      - Restaurant
+      summary: addRestaurant
+      operationId: addRestaurant
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/addRestaurantRequest'
+              - example:
+                  name: madrid
+                  location:
+                    type: Point
+                    coordinates:
+                    - 77.1845669
+                    - 28.6517981
+                  address: Karol Bagh, New Delhi, Delhi, India
+                  openTime: 06:54:59
+                  closeTime: 20:54:59
+                  status: active
+                  cuisines:
+                  - ndole
+                  - yam
+                  price: 20000
+                  delivery_time: 10:54:59
+                  city_id: 650aae177ca8708946e18a77
+                  user_id: 65085c6db20cc3d9c758d8bb
+                  email: muam@gmail.com
+                  phone: '650199079'
+                  password: '123456789'
+                  res_name: mad
+                  short_name: mad
+            example:
+              name: madrid
+              location:
+                type: Point
+                coordinates:
+                - 77.1845669
+                - 28.6517981
+              address: Karol Bagh, New Delhi, Delhi, India
+              openTime: 06:54:59
+              closeTime: 20:54:59
+              status: active
+              cuisines:
+              - ndole
+              - yam
+              price: 20000
+              delivery_time: 10:54:59
+              city_id: 650aae177ca8708946e18a77
+              user_id: 65085c6db20cc3d9c758d8bb
+              email: muam@gmail.com
+              phone: '650199079'
+              password: '123456789'
+              res_name: mad
+              short_name: mad
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /restaurant/getRestaurants:
+    get:
+      tags:
+      - Restaurant
+      summary: getRestaurants
+      operationId: getRestaurants
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /restaurant/nearbyRestaurants:
+    get:
+      tags:
+      - Restaurant
+      summary: nearbyRestaurants
+      operationId: nearbyRestaurants
+      parameters:
+      - name: lat
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 24
+      - name: lng
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 23
+      - name: radius
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: ok
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []  
+  /restaurant/searchNearbyRestaurants:
+    get:
+      tags:
+      - Restaurant
+      summary: searchNearbyRestaurants
+      operationId: searchNearbyRestaurants
+      parameters:
+      - name: lat
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 24
+      - name: lng
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 23
+      - name: radius
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: radius
+      - name: name
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: name
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []  
+  /order/create:
+    post:
+      tags:
+      - Order
+      summary: placeOrder
+      operationId: placeOrder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/placeOrderRequest'
+              - example:
+                  user_id: 650abbcc7ca8708946e18a8e
+                  restaurant_id: 650abbd07ca8708946e18a90
+                  order: yam
+                  address: ''
+                  status: active
+                  payment_status: true
+                  payment_mode: momo
+                  total: 4500
+                  grandTotal: 5000
+                  deliveryCharge: 500
+            example:
+              user_id: 650abbcc7ca8708946e18a8e
+              restaurant_id: 650abbd07ca8708946e18a90
+              order: yam
+              address: ''
+              status: active
+              payment_status: true
+              payment_mode: momo
+              total: 4500
+              grandTotal: 5000
+              deliveryCharge: 500
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /order/userOrders:
+    get:
+      tags:
+      - Order
+      summary: getUserOrders
+      operationId: getUserOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /item/create:
+    post:
+      tags:
+      - Item
+      summary: addItem
+      operationId: addItem
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/addItemRequest'
+              - example:
+                  name: ok
+                  status: active
+                  price: '500'
+                  veg: fgsdf
+                  category_id: 650abbcc7ca8708946e18a8e
+                  restaurant_id: 650abbcc7ca8708946e18a8e
+                  cover: ''
+            example:
+              name: ok
+              status: active
+              price: '500'
+              veg: fgsdf
+              category_id: 650abbcc7ca8708946e18a8e
+              restaurant_id: 650abbcc7ca8708946e18a8e
+              cover: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /item/menuItems{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The item ID
+    get:
+      tags:
+      - Item
+      summary: getMenu
+      operationId: getMenu
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /city/create:
+    post:
+      tags:
+      - City
+      summary: addCity
+      operationId: addCity
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/addCityRequest'
+              - example:
+                  name: buea
+                  lat: '4.159302'
+                  lng: '9.243536'
+                  status: active
+            example:
+              name: buea
+              lat: '4.159302'
+              lng: '9.243536'
+              status: active
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /city/cities:
+    get:
+      tags:
+      - City
+      summary: getCities
+      operationId: getCities
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /category/getCategories/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The category ID
+    get:
+      tags:
+      - Category
+      summary: getCategoriesByRestaurant
+      operationId: getCategoriesByRestaurant
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      
+  /banner/create:
+    post:
+      tags:
+      - Banner
+      summary: addBanner
+      operationId: addBanner
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/addAddressRequest'
+              - example:
+                  bannerImages: banner.png
+                  
+            example:
+              bannerImages: banner.png
+              
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /banner/banners:
+    get:
+      tags:
+      - Banner
+      summary: getBanners
+      operationId: getBanners
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /address/create:
+    post:
+      tags:
+      - Address
+      summary: addAddress
+      operationId: addAddress
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/addAddressRequest'
+              - example:
+                  user_id: 650abbcc7ca8708946e18a8e
+                  title: muea
+                  address: muea
+                  landmark: vake
+                  house: herbie
+                  lat: '2345'
+                  lng: '4562'
+            example:
+              user_id: 650abbcc7ca8708946e18a8e
+              title: muea
+              address: muea
+              landmark: vake
+              house: herbie
+              lat: '2345'
+              lng: '4562'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /address/userAddresses:
+    get:
+      tags:
+      - Address
+      summary: getUserAddresses
+      operationId: getUserAddresses
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /address/checkAddress:
+    get:
+      tags:
+      - Address
+      summary: checkAddress
+      operationId: checkAddress
+      parameters:
+      - name: lat
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 24
+      - name: lng
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 23
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /address/getUserLimitedAddresses:
+    get:
+      tags:
+      - Address
+      summary: getUserLimitedAddresses
+      operationId: getUserLimitedAddresses
+      parameters:
+      - name: limit
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 24
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []    
+  /address/address/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The address ID
+    get:
+      tags:
+      - Address
+      summary: getAddressById
+      operationId: getAddressById
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /address/delete/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The address ID
+    delete:
+      tags:
+      - Address
+      summary: deleteAddress
+      operationId: deleteAddress
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /address/edit/{id}:
+    put:
+      tags:
+      - Address
+      summary: editAddress
+      operationId: editAddress
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/editAddressRequest'
+              - example:
+                  user_id: ''
+                  title: ''
+                  address: ''
+                  landmark: ''
+                  house: ''
+                  lat: ''
+                  lng: ''
+            example:
+              user_id: ''
+              title: ''
+              address: ''
+              landmark: ''
+              house: ''
+              lat: ''
+              lng: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    signuprequest:
+      title: signuprequest
+      required:
+      - name
+      - phone
+      - email
+      - password
+      - type
+      - status
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+      example:
+        name: muma
+        phone: '1234'
+        email: gachettela2@gmail.com
+        password: mumauser
+        type: admin
+        status: active
+    verifyUserEmailTokenRequest:
+      title: verifyUserEmailTokenRequest
+      required:
+      - verification_token
+      - email
+      type: object
+      properties:
+        verification_token:
+          type: string
+        email:
+          type: string
+      example:
+        verification_token: '083901'
+        email: gachettela2@gmail.com
+    updatePhoneNumberRequest:
+      title: updatePhoneNumberRequest
+      required:
+      - email
+      - phone
+      type: object
+      properties:
+        email:
+          type: string
+        phone:
+          type: string
+      example:
+        email: gachettela2@gmail.com
+        phone: '650199079'
+    updateUserProfileRequest:
+      title: updateUserProfileRequest
+      required:
+      - email
+      - phone
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        phone:
+          type: string
+        password:
+          type: string
+      example:
+        email: gachhettela2@gmail.com
+        phone: '1234'
+        password: mumauser
+    addRestaurantRequest:
+      title: addRestaurantRequest
+      required:
+      - name
+      - location
+      - address
+      - openTime
+      - closeTime
+      - status
+      - cuisines
+      - price
+      - delivery_time
+      - city_id
+      - user_id
+      - email
+      - phone
+      - password
+      - res_name
+      - short_name
+      type: object
+      properties:
+        name:
+          type: string
+        location:
+          allOf:
+          - $ref: '#/components/schemas/Location'
+          - {}
+        address:
+          type: string
+        openTime:
+          type: string
+        closeTime:
+          type: string
+        status:
+          type: string
+        cuisines:
+          type: array
+          items:
+            type: string
+          description: ''
+        price:
+          type: integer
+          format: int32
+        delivery_time:
+          type: string
+        city_id:
+          type: string
+        user_id:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        password:
+          type: string
+        res_name:
+          type: string
+        short_name:
+          type: string
+      example:
+        name: madrid
+        location:
+          type: Point
+          coordinates:
+          - 77.1845669
+          - 28.6517981
+        address: Karol Bagh, New Delhi, Delhi, India
+        openTime: 06:54:59
+        closeTime: 20:54:59
+        status: active
+        cuisines:
+        - ndole
+        - yam
+        price: 20000
+        delivery_time: 10:54:59
+        city_id: 650aae177ca8708946e18a77
+        user_id: 65085c6db20cc3d9c758d8bb
+        email: muam@gmail.com
+        phone: '650199079'
+        password: '123456789'
+        res_name: mad
+        short_name: mad
+    Location:
+      title: Location
+      required:
+      - type
+      - coordinates
+      type: object
+      properties:
+        type:
+          type: string
+        coordinates:
+          type: array
+          items:
+            type: number
+          description: ''
+      example:
+        type: Point
+        coordinates:
+        - 77.1845669
+        - 28.6517981
+    placeOrderRequest:
+      title: placeOrderRequest
+      required:
+      - user_id
+      - restaurant_id
+      - order
+      - address
+      - status
+      - payment_status
+      - payment_mode
+      - total
+      - grandTotal
+      - deliveryCharge
+      type: object
+      properties:
+        user_id:
+          type: string
+        restaurant_id:
+          type: string
+        order:
+          type: string
+        address:
+          type: string
+        status:
+          type: string
+        payment_status:
+          type: boolean
+        payment_mode:
+          type: string
+        total:
+          type: integer
+          format: int32
+        grandTotal:
+          type: integer
+          format: int32
+        deliveryCharge:
+          type: integer
+          format: int32
+      example:
+        user_id: 650abbcc7ca8708946e18a8e
+        restaurant_id: 650abbd07ca8708946e18a90
+        order: yam
+        address: ''
+        status: active
+        payment_status: true
+        payment_mode: momo
+        total: 4500
+        grandTotal: 5000
+        deliveryCharge: 500
+    addItemRequest:
+      title: addItemRequest
+      required:
+      - name
+      - status
+      - price
+      - veg
+      - category_id
+      - restaurant_id
+      - cover
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+        price:
+          type: string
+        veg:
+          type: string
+        category_id:
+          type: string
+        restaurant_id:
+          type: string
+        cover:
+          type: string
+      example:
+        name: ok
+        status: active
+        price: '500'
+        veg: fgsdf
+        category_id: 650abbcc7ca8708946e18a8e
+        restaurant_id: 650abbcc7ca8708946e18a8e
+        cover: ''
+    addCityRequest:
+      title: addCityRequest
+      required:
+      - name
+      - lat
+      - lng
+      - status
+      type: object
+      properties:
+        name:
+          type: string
+        lat:
+          type: string
+        lng:
+          type: string
+        status:
+          type: string
+      example:
+        name: buea
+        lat: '4.159302'
+        lng: '9.243536'
+        status: active
+    addAddressRequest:
+      title: addAddressRequest
+      required:
+      - user_id
+      - title
+      - address
+      - landmark
+      - house
+      - lat
+      - lng
+      type: object
+      properties:
+        user_id:
+          type: string
+        title:
+          type: string
+        address:
+          type: string
+        landmark:
+          type: string
+        house:
+          type: string
+        lat:
+          type: string
+        lng:
+          type: string
+      example:
+        user_id: 650abbcc7ca8708946e18a8e
+        title: muea
+        address: muea
+        landmark: vake
+        house: herbie
+        lat: '2345'
+        lng: '4562'
+    editAddressRequest:
+      title: editAddressRequest
+      required:
+      - user_id
+      - title
+      - address
+      - landmark
+      - house
+      - lat
+      - lng
+      type: object
+      properties:
+        user_id:
+          type: string
+        title:
+          type: string
+        address:
+          type: string
+        landmark:
+          type: string
+        house:
+          type: string
+        lat:
+          type: string
+        lng:
+          type: string
+      example:
+        user_id: ''
+        title: ''
+        address: ''
+        landmark: ''
+        house: ''
+        lat: ''
+        lng: ''
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: User
+- name: Restaurant
+- name: Order
+- name: Item
+- name: City
+- name: Category
+- name: Banner
+- name: Address

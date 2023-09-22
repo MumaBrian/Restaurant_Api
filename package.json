@@ -4,8 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "nodemon --legacy-watch",
-    "start": "node index.js"
+    "start": "nodemon --exec ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -32,7 +31,6 @@
     "multer": "^1.4.4",
     "node": "^17.7.1",
     "nodemailer": "^6.9.5",
-    "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.15",
     "razorpay": "^2.8.1",
     "redis": "^4.6.8",
