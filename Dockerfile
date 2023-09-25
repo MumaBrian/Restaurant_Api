@@ -17,5 +17,5 @@ COPY . .
 EXPOSE 3000
 
 # Run the backend application
-CMD [ "npm", "run", "dev", "start","create-bundle"]
+CMD [ "npm", "run", "dev"]
 
