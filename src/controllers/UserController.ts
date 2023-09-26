@@ -1,4 +1,4 @@
-import { Redis } from "../utils/Redis";
+// import { Redis } from "../utils/Redis";
 import { Jwt } from "../utils/Jwt";
 import { NodeMailer } from "../utils/NodeMailer";
 import { Utils } from "../utils/Utils";
@@ -418,7 +418,7 @@ export class UserController {
     try {
       if (decoded_data) {
         // delete refresh token from redis database
-        await Redis.deleteKey(decoded_data.aud);
+        // await Redis.deleteKey(decoded_data.aud);
         res.json({ success: true });
       } else {
         req.errorStatus = 403;

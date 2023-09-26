@@ -1,4 +1,4 @@
-import { Redis } from "./Redis";
+// import { Redis } from "./Redis";
 import * as jwt from "jsonwebtoken";
 import { getEnvironmentVariables } from "../environments/environment";
 import * as Crypto from "crypto";
@@ -44,8 +44,8 @@ export class Jwt {
           issuer: "technyks.com",
         }
       );
-      // set refreshToken in Redis with key userId
-      await Redis.setValue(userId.toString(), refreshToken, redis_ex);
+      // // set refreshToken in Redis with key userId
+      // await Redis.setValue(userId.toString(), refreshToken, redis_ex);
       return refreshToken;
     } catch (e) {
       // throw new Error(e);
@@ -64,17 +64,17 @@ export class Jwt {
           else {
             // match refresh tokens from Redis database
             const user: any = decoded;
-            Redis.getValue(user.aud)
-              .then((value) => {
-                if (value === refeshToken) resolve(decoded);
-                else
-                  reject(
-                    new Error("Your Session is Expired! Please Login Again...")
-                  );
-              })
-              .catch((e) => {
-                reject(e);
-              });
+            // Redis.getValue(user.aud)
+              // .then((value) => {
+              //   if (value === refeshToken) resolve(decoded);
+              //   else
+              //     reject(
+              //       new Error("Your Session is Expired! Please Login Again...")
+              //     );
+              // })
+              // .catch((e) => {
+              //   reject(e);
+              // });
           }
         }
       );
